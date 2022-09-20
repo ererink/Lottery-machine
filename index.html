@@ -31,19 +31,21 @@
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <script>
      const button = document.querySelector('#lotto-btn')
-    button.addEventListener('click', function() {
-        for (let i=0; i<7; i++) {
+     button.addEventListener('click', function() {
         // 컨테이너를 만들고
         const ballContainer = document.createElement('div')
         ballContainer.classList.add('ball-container')
 
         // 공을 만들어서 =>  6개를 만들어서
         const numbers = _.sampleSize(_.range(1, 46), 6)
+        numbers.sort((a, b) => (a-b));
         console.log(numbers)
+
+        for (let i=0; numbers.length; i++) {
         const ball = document.createElement('div')
         ball.classList.add('ball')
-        ball.innerText = numbers[0]
-        ball.style.backgroundColor = 'blue'
+        ball.innerText = numbers[i]
+        console.log(numbers[i])
 
         // 컨테이너에 붙인다.
         ballContainer.appendChild(ball)
